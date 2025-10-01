@@ -8,14 +8,20 @@
 import Foundation
 import SwiftUI
 
-struct Template: View{
+struct Bottom: View{
     var body: some View {
-        Text("Template")
+        Text("也可以叫我Bill")
+            .font(.custom("Nagurigaki-Crayon", size: 30))
+            .multilineTextAlignment(.center)
+            .lineSpacing(10)
+            .shadow(color: .orange, radius: 4)
+            .textCase(.uppercase)
+            .padding([.trailing, .bottom], 24)  // 右、下各縮 24pt
           
     }
 }
  
 
 #Preview {
-    Template()
+    Bottom()
 }

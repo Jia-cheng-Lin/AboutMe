@@ -8,14 +8,24 @@
 import Foundation
 import SwiftUI
 
-struct Template: View{
+struct Background: View{
     var body: some View {
-        Text("Template")
+        Image(.fire)
+            .resizable()
+            .scaledToFill()
+            .frame(
+                minWidth: 0,
+                maxWidth: .infinity,
+                minHeight: 0,
+                maxHeight: .infinity
+            )
+            .opacity(0.1)
+            .ignoresSafeArea()
           
     }
 }
  
 
 #Preview {
-    Template()
+    Background()
 }
