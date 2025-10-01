@@ -48,10 +48,18 @@ struct NameCard: View {
                         Text("+886 922-653-010")
                     }
                 }
-                .padding()
-                .background(Color(.systemBackground))
-                .clipShape(.rect(cornerRadius: 10))
-                .shadow(radius: 5)
+        .padding()
+        // 使用較有對比的卡片底色（會隨深淺模式變化）
+        .background(
+            RoundedRectangle(cornerRadius: 20, style: .continuous)
+                .fill(Color(.secondarySystemBackground))
+        )
+        // 加上一圈動態顏色的邊線，深色模式也清楚
+        .overlay(
+            RoundedRectangle(cornerRadius: 20, style: .continuous)
+                .stroke(Color(.separator), lineWidth: 1)
+        )
+        .shadow(radius: 10)
     }
 }
 

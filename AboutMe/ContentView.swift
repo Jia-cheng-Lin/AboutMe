@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import MapKit
 
 struct ContentView: View {
     let name = "Bill"
@@ -15,6 +16,10 @@ struct ContentView: View {
         ZStack(alignment: .bottomTrailing) {
             // 背景放最底層
             Background()
+            // 標題與右下角文字放在最上層
+            Title()
+                .offset(x: 40)
+            Bottom()
             
             // 內容捲動區放中間
             ScrollView {
@@ -29,6 +34,8 @@ struct ContentView: View {
                         Text("Education")
                             .font(.largeTitle)
                             .bold()
+                            .padding(10)
+                            .glassEffect(.regular.tint(.green.opacity(0.4)))
                     }
                     .padding(.horizontal)
                     
@@ -97,6 +104,8 @@ struct ContentView: View {
                         Text("Experience")
                             .font(.largeTitle)
                             .bold()
+                            .padding(10)
+                            .glassEffect(.regular.tint(.brown.opacity(0.4)))
                     }
                     .padding(.horizontal)
                     
@@ -150,6 +159,8 @@ struct ContentView: View {
                         Text("Leadership")
                             .font(.largeTitle)
                             .bold()
+                            .padding(10)
+                            .glassEffect(.regular.tint(.yellow.opacity(0.4)))
                     }
                     // 想更貼左可改為 .padding(.leading)
                     .padding(.horizontal)
@@ -193,28 +204,84 @@ struct ContentView: View {
                     }
                     
                     HStack(spacing: 4) {
+                        Image(systemName: "microphone.circle.fill")
+                            .symbolEffect(.variableColor)
+                            .font(.largeTitle)
+                            .bold()
+                            .padding(.trailing, 4)
+                        Text("Conference")
+                            .font(.largeTitle)
+                            .bold()
+                            .padding(10)
+                            .glassEffect(.regular.tint(.orange.opacity(0.4)))
+                    }
+                    // 想更貼左可改為 .padding(.leading)
+                    .padding(.horizontal)
+                    Travel()
+                    
+                    
+                    HStack(spacing: 4) {
                         Image(systemName: "info.square.fill")
                             .symbolEffect(.variableColor)
                             .font(.largeTitle)
                             .bold()
                             .padding(.trailing, 4)
-                        Text("Contact information")
+                        Text("Information")
                             .font(.largeTitle)
                             .bold()
+                            .padding(10)
+                            .glassEffect(.regular.tint(.blue.opacity(0.4)))
                     }
                     // 想更貼左可改為 .padding(.leading)
                     .padding(.horizontal)
-                    NameCard()
-                        .padding(.horizontal)
+                    
+                    HStack(spacing: 4) {
+                        NameCard()
+                            .padding(.horizontal)
+                        
+                        // 將 LinkedIn 圖片用 mask 裁成自訂形狀，並提供可點擊的連結
+                        VStack {
+                            Image("linkedin")
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: 80, height: 80)
+                                .mask {
+                                    // 遮罩視圖：不透明處保留，透明處裁掉
+                                    Image(systemName: "arrowshape.down.fill")
+                                        .font(.system(size: 70, weight: .black, design: .rounded))
+                                        .frame(width: 80, height: 80, alignment: .center)
+                                }
+                            
+                            // 只讓「LinkedIn」文字可點開連結
+                            Link("LinkedIn",
+                                 destination: URL(string: "https://www.linkedin.com/in/jia-cheng-lin-68b2751a7/")!
+                            )
+                            .font(.system(size: 26, weight: .bold))
+                            
+                            Text("[Instagram](https://www.instagram.com/bill092801/)")
+                                .font(.custom("MateSC-Regular", size: 24))
+                                .tint(.red)
+                            Image("instagram")
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: 80, height: 80)
+                                .mask {
+                                    // 遮罩視圖：不透明處保留，透明處裁掉
+                                    Image(systemName: "arrowshape.up.fill")
+                                        .font(.system(size: 70, weight: .black, design: .rounded))
+                                        .frame(width: 80, height: 80, alignment: .center)
+                                }
+                        }
+                    }
                 }
                 // 用 padding 讓出上下空間，避免被 Title/Bottom 蓋住
                 .padding(.top, 160)   // 推開上方 Title 的空間，可依實際字體高度微調
                 .padding(.bottom, 80) // 預留右下角 Bottom 的空間
             }
             
-            // 標題與右下角文字放在最上層
-            Title()
-            Bottom()
+//            // 標題與右下角文字放在最上層
+//            Title()
+//            Bottom()
         }  // 第一個 ZStack
     } // body
 } // struct

@@ -2,7 +2,7 @@
 //  AboutMeApp.swift
 //  AboutMe
 //
-//  Created by 陳芸萱 on 2025/9/26.
+//  Created by 林嘉誠 on 2025/9/26.
 //
 
 import SwiftUI

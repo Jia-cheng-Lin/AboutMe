@@ -74,7 +74,16 @@ struct Leadership: View{
         .padding()
         // 給整張卡片一個固定寬度，讓內文自然換行
         .frame(width: 350, alignment: .leading)
-        .background(Color(.systemBackground))
+        // 使用較有對比的卡片底色（會隨深淺模式變化）
+        .background(
+            RoundedRectangle(cornerRadius: 20, style: .continuous)
+                .fill(Color(.secondarySystemBackground))
+        )
+        // 加上一圈動態顏色的邊線，深色模式也清楚
+        .overlay(
+            RoundedRectangle(cornerRadius: 20, style: .continuous)
+                .stroke(Color(.separator), lineWidth: 1)
+        )
         .clipShape(.rect(cornerRadius: 20))
         .shadow(radius: 10)
           

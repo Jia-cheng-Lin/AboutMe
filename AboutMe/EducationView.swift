@@ -5,7 +5,6 @@
 //  Created by 林嘉誠 on 2025/9/26.
 //
 
-
 import Foundation
 import Playgrounds
 import SwiftUI
@@ -70,12 +69,19 @@ struct EducationView: View {
             }
         }
         .padding()
-        .background(Color(.systemBackground))
-        .clipShape(.rect(cornerRadius: 20))
+        // 使用較有對比的卡片底色（會隨深淺模式變化）
+        .background(
+            RoundedRectangle(cornerRadius: 20, style: .continuous)
+                .fill(Color(.secondarySystemBackground))
+        )
+        // 加上一圈動態顏色的邊線，深色模式也清楚
+        .overlay(
+            RoundedRectangle(cornerRadius: 20, style: .continuous)
+                .stroke(Color(.separator), lineWidth: 1)
+        )
         .shadow(radius: 10)
     }
 }
-
 
 #Preview {
     // 預設 logo（ntu）
