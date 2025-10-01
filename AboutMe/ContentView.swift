@@ -275,7 +275,7 @@ struct ContentView: View {
                     }
                 }
                 // 用 padding 讓出上下空間，避免被 Title/Bottom 蓋住
-                .padding(.top, 160)   // 推開上方 Title 的空間，可依實際字體高度微調
+                .padding(.top, 120)   // 推開上方 Title 的空間，可依實際字體高度微調
                 .padding(.bottom, 80) // 預留右下角 Bottom 的空間
             }
             
